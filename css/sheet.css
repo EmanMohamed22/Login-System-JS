@@ -1,0 +1,29 @@
+body{
+    background-color: #212529;
+}
+.form{
+    box-shadow: -5px 2px 54px -9px rgb(0 0 0);
+   
+    
+    
+}
+.nov{
+    box-shadow: -5px 2px 54px -9px rgb(0 0 0);
+}
+.blue{
+    height: 200px;
+   
+}
+#welcomeUser{
+    box-shadow: -5px 2px 54px -9px rgb(0 0 0);
+    margin: auto;
+}
+@media (max-width:700px){
+    .form h1{
+     font-size: 20px;
+
+    }
+    .form input{
+        font-size: 13px;
+    }
+}
