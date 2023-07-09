@@ -1,19 +1,19 @@
-
+// ////////////global/////////
 var nameInput = document.getElementById("input1")
 var emailInput = document.getElementById("input2")
 var passwordInput = document.getElementById("input3")
 var uEmail = document.getElementById("inpt1")
 var uPass = document.getElementById("inpt2")
-
-//sign up validation
 var users = []; 
+////////sign up validation//////////
+
 
 if (localStorage.getItem("users")!= null) {
     users = JSON.parse(localStorage.getItem("users"))
 }
-var lol =document.getElementById("butn1");
-if (lol) {
-    lol.addEventListener("click",function () {
+var butn1 =document.getElementById("butn1");
+if (butn1) {
+    butn1.addEventListener("click",function () {
     
         if (nameInput.value === "" || emailInput.value ==="" || passwordInput.value ==="") {
              
@@ -31,7 +31,7 @@ if (lol) {
                     users.push(user)
                     localStorage.setItem("users",JSON.stringify(users) )
                     document.getElementById("text").innerHTML= `<span class="text-success fs-2 mt-4">success</span>`
-                    location.href = "index.html","_self";
+                    location.href = "index.html";
 
                     clear()
                    }
@@ -57,29 +57,31 @@ function isExist(index) {
 
 //log in///
 
-function login(ind) {
+function login() {
     
     var tEmail = uEmail.value;
     var tPass = uPass.value;
 if (empty()==false) {
     document.querySelector("p").innerHTML = `<span class="text-danger mt-4 fs-3">All input is Required</span>`
 }else{
-    
-     for (var i = 0; i < users.length; i++) {
-     if (users[i].email.toLowerCase() == tEmail.toLowerCase() && users[i].password.toLowerCase() == tPass.toLowerCase()) {
-        
-
-        var result = (users[i].name);
-        localStorage.setItem("result",JSON.stringify(result) )
-    location.href = "welcome.html","_self";
-
-    
-    
-    break;
-     }   else{
-        document.querySelector("p").innerHTML = `<span class="text-danger mt-4 fs-3">Invalid email or Password</span>`
-     }
-      }
+    if (localStorage.getItem('users')) {
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].email.toLowerCase() == tEmail.toLowerCase() && users[i].password.toLowerCase() == tPass.toLowerCase()) {
+               
+       
+               var result = (users[i].name);
+               localStorage.setItem("result",JSON.stringify(result) )
+               location.href = "welcome.html";
+       
+           break;
+            }   else{
+               document.querySelector("p").innerHTML = `<span class="text-danger mt-4 fs-3">Invalid email or Password</span>`
+            }
+             }
+    }else{
+        document.querySelector("p").innerHTML = `<span class="text-danger mt-4 fs-3">Please sign up first</span>`
+    }
+ 
   
    }
  }
@@ -97,4 +99,5 @@ if (empty()==false) {
  
   function logout() {
     localStorage.removeItem("result");
+    
   }
